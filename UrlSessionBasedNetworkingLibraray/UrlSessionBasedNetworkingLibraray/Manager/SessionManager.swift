@@ -49,6 +49,7 @@ open class SessionManager: NSObject {
     }
     
     
+    
 
     open func request(
         _ url: String,
@@ -68,6 +69,24 @@ open class SessionManager: NSObject {
         } catch {
          
         }
+    }
+    
+    open func request(
+        _ urlRequest: URLRequest,
+        completion: @escaping (NetworkRouterCompletion))
+    {
+            session.dataTask(with: urlRequest) { (data, response, error) in
+                completion(data,response,error)
+                }.resume()
+    }
+    
+    open func upload(
+        _ urlRequest: URLRequest,
+        completion: @escaping (NetworkRouterCompletion))
+    {
+            session.uploadTask(with: urlRequest, from: urlRequest.httpBody) { (data, response, error) in
+                completion(data,response,error)
+                }.resume()
     }
 
     open func download(

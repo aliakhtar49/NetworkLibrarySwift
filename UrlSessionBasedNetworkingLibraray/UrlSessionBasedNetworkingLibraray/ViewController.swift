@@ -15,6 +15,43 @@ class ViewController: UIViewController, URLSessionDownloadDelegate,URLSessionTas
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "imageOne.png"), 0.7)
+        let aarouter = AARouter<MyImageService>()
+        let parameters = ["name":"MyTestFile2322","description":"My tutorial ali"]
+        aarouter.request(.uploadGif(imageData!, description: parameters)) { (data, response, error) in
+            if let response = response {
+                                print(response)
+                            }
+                            if let data = data {
+                                do {
+                                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                                    print(json)
+                                }catch {
+                                    print(error)
+                                }
+                            }
+        }
+    
+        
+      //  getPostRequest();
+        
+//         let aarouter = AARouter<MyService>()
+//        aarouter.request(.createTopics(id: "spring", name: "Spring framework", description: "Spring Framework Description")) { (data, response, error) in
+//            if let response = response {
+//                print(response)
+//            }
+//            if let data = data {
+//                do {
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                    print(json)
+//                }catch {
+//                    print(error)
+//                }
+//            }
+//        }
+        
+        
+        
         
 //        let configuration = URLSessionConfiguration.default
 //        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)

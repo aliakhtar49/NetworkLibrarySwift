@@ -29,7 +29,7 @@ class AAManager {
             completion: compeletion
         )
     }
-
+    
     public func request(
         _ url: String,
         method: HTTPMethod = .get,
@@ -63,7 +63,27 @@ class AAManager {
     }
     
     
-   
+    /*Method with only URLRequest prepopulated*/
+    open func request(
+        _ urlRequest: URLRequest,
+        completion: @escaping (NetworkRouterCompletion))
+    {
+        return SessionManager.default.request(
+            urlRequest,
+            completion: completion
+        )
+    }
+    open func upload(
+        _ urlRequest: URLRequest,
+        completion: @escaping (NetworkRouterCompletion))
+    {
+        return SessionManager.default.upload(
+            urlRequest,
+            completion: completion
+        )
+    }
+    
+    
 }
 
 

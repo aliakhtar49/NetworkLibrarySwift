@@ -13,3 +13,7 @@ public typealias Parameters = [String:String]
 public protocol ParameterEncoder {
     static func encode(urlRequest: inout URLRequest, with parameters: Parameters?) throws
 }
+
+
+
+
